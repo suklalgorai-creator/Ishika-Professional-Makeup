@@ -77,15 +77,15 @@ export function renderServices(data, container, basePath = "") {
 export function renderPackages(data, container) {
     if (!container) return;
 
-    const html = data.packages.map(pkg => `
-        <div class="package-card ${pkg.featured ? 'featured' : ''}">
+    const html = data.packages.map((pkg, index) => `
+        <div class="package-card ${pkg.featured ? 'featured' : ''} reveal-up" style="transition-delay: ${index * 100}ms">
             ${pkg.badge ? `<div class="package-badge">${pkg.badge}</div>` : ''}
             <h3>${pkg.name}</h3>
             <h1>${pkg.price}</h1>
-            <ul>
-                ${pkg.features.map(f => `<li>${f}</li>`).join('')}
+            <ul style="list-style: none; padding: 0; text-align: left; max-width: 250px; margin: 0 auto 35px auto;">
+                ${pkg.features.map(f => `<li style="display: flex; align-items: center; gap: 10px;"><i data-lucide="check-circle-2" style="color: ${pkg.featured ? '#fff' : 'var(--primary)'}; width: 18px; height: 18px; flex-shrink: 0;"></i> <span>${f}</span></li>`).join('')}
             </ul>
-            <a href="#contact" class="primary-btn">Book Now</a>
+            <a href="?service=${encodeURIComponent(pkg.name + ' Package')}#contact" class="primary-btn" data-service="${pkg.name} Package">Book Package</a>
         </div>
     `).join('');
     
@@ -195,7 +195,8 @@ export function renderContactDetails(data, basePath = "") {
 
     const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me"]');
     whatsappLinks.forEach(link => {
-        link.href = `https://wa.me/${data.salon.contact.whatsapp}?text=Hello%20I%20want%20to%20book%20an%20appointment`;
+        const defaultMessage = `Hello! I have an inquiry for ${data.salon.name}.`;
+        link.href = `https://wa.me/${data.salon.contact.whatsapp}?text=${encodeURIComponent(defaultMessage)}`;
     });
 
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
@@ -253,7 +254,7 @@ export function renderServicesPage(data, container, basePath = "") {
                     ${service.features.map(f => `<li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> ${f}</li>`).join('')}
                 </ul>
                 <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">${service.price}</div>
-                <a href="${basePath}index.html#contact" class="primary-btn">Book This Service</a>
+                <a href="${basePath}index.html?service=${encodeURIComponent(service.title)}#contact" class="primary-btn" data-service="${service.title}">Book This Service</a>
             </div>
         `;
         

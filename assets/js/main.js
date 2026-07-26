@@ -88,6 +88,16 @@ async function loadAndRender() {
         updateChrome();
         setActiveLink();
 
+        // 5. Handle hash scrolling for dynamically rendered content
+        if (window.location.hash) {
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 300); // slight delay to ensure layout shifts are done
+        }
+
     } catch (error) {
         console.error('Error loading data.json:', error);
     }

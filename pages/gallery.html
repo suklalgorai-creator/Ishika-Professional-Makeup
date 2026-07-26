@@ -127,6 +127,26 @@
 </head>
 
 <body data-theme="dark">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Ishika Professional Salon & Spa</div>
+    </div>
+    <script>
+        (function(){
+            var pl = document.getElementById('preloader');
+            if(!pl) return;
+            var hide = function(){
+                pl.classList.add('loaded');
+                setTimeout(function(){ pl.remove(); }, 850);
+            };
+            if(document.readyState === 'complete') { hide(); }
+            else { 
+                window.addEventListener('load', hide); 
+                setTimeout(hide, 3000); // 3s fallback
+            }
+        })();
+    </script>
     <!-- Navbar -->
     <header class="header">
         <nav class="navbar" aria-label="Primary navigation">
@@ -142,12 +162,14 @@
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="../index.html#testimonials" class="nav-link">Reviews</a></li>
                 <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                <li class="mobile-theme-toggle">
+                    <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+                        <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
+                    </button>
+                </li>
             </ul>
             <div class="nav-actions">
                 <a href="../index.html#contact" class="book-btn">Book Appointment</a>
-                <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
-                    <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
-                </button>
             </div>
             <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">&#9776;</button>
         </nav>
@@ -198,6 +220,10 @@
             <div class="footer-about">
                 <a href="../index.html" class="footer-logo" aria-label="Ishika Professional Salon home">ISHIKA<span>Professional Salon &amp; Spa</span></a>
                 <p>Luxury bridal makeup, elegant hair styling, mehendi and restorative beauty rituals, crafted for your most memorable moments.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ishika_professional_salon_spa" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="https://www.youtube.com/@josphinclairing8087" target="_blank" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                </div>
             </div>
             <div>
                 <h3>Quick Links</h3>
@@ -206,7 +232,7 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="../index.html#packages">Packages</a></li>
-                    <li><a href="../index.html#contact">Book Appointment</a></li>
+                    <li><a href="about.html">About Us</a></li>
                 </ul>
             </div>
             <div>
@@ -215,18 +241,22 @@
                     <li><a href="services.html#bridal-makeup">Bridal Makeup</a></li>
                     <li><a href="services.html#hair-styling">Hair Styling</a></li>
                     <li><a href="services.html#mehendi">Mehendi</a></li>
+                    <li><a href="services.html#spa-therapy">Facial &amp; Spa</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
                 <h3>Visit &amp; Contact</h3>
-                <ul>
-                    <li>Ghatsila, Jharkhand</li>
-                    <li><a href="tel:+917463030584">+91 74630 30584</a></li>
+                <ul style="display: flex; flex-direction: column; gap: 15px;">
+                    <li style="display: flex; gap: 10px; align-items: flex-start;"><i data-lucide="map-pin" style="width: 18px; height: 18px; color: var(--gold); margin-top: 4px;"></i> Ghatsila, Jharkhand, India</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="phone" style="width: 18px; height: 18px; color: var(--gold);"></i> <a href="tel:+917463030584">+91 74630 30584</a></li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="mail" style="width: 18px; height: 18px; color: var(--gold);"></i> <a href="mailto:info@example.com">info@example.com</a></li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="clock" style="width: 18px; height: 18px; color: var(--gold);"></i> Open daily, 9:00 AM - 8:00 PM</li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
             <span>Copyright 2026 Ishika Professional Salon &amp; Spa. All rights reserved.</span>
+            <span class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a><span>Designed by Ishika Professional Salon &amp; Spa</span></span>
         </div>
     </footer>
 

@@ -41,10 +41,11 @@ export const updateChrome = () => {
     backToTop?.classList.toggle('show', scrollTop > 500);
 
     if (progress) {
-        progress.style.width = `${progressWidth}%`;
+        progress.style.transform = `scaleX(${progressWidth / 100})`;
     }
 
-    if (hero && !prefersReducedMotion) {
+    // Disable heavy background parallax on mobile devices to prevent lag
+    if (hero && !prefersReducedMotion && window.innerWidth > 992) {
         hero.style.backgroundPosition = `center ${scrollTop * 0.18}px`;
     }
 };

@@ -11,68 +11,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../assets/css/global.css?v=12">
-    <style>
-        .about-page-content {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-        .about-text p {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .mission-vision {
-            background: var(--bg-alt);
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .mv-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        .mv-card {
-            background: var(--surface);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .mv-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-        @media (max-width: 900px) {
-            .about-page-content, .mv-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/about-page.css">
     
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
 </head>
 
 <body data-theme="dark">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Ishika Professional Salon & Spa</div>
+    </div>
+    <script>
+        (function(){
+            var pl = document.getElementById('preloader');
+            if(!pl) return;
+            var hide = function(){
+                pl.classList.add('loaded');
+                setTimeout(function(){ pl.remove(); }, 850);
+            };
+            if(document.readyState === 'complete') { hide(); }
+            else { 
+                window.addEventListener('load', hide); 
+                setTimeout(hide, 3000); // 3s fallback
+            }
+        })();
+    </script>
     <!-- Navbar -->
     <header class="header">
         <nav class="navbar" aria-label="Primary navigation">
@@ -88,12 +52,14 @@
                 <li><a href="about.html" class="nav-link active">About</a></li>
                 <li><a href="../index.html#testimonials" class="nav-link">Reviews</a></li>
                 <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                <li class="mobile-theme-toggle">
+                    <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+                        <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
+                    </button>
+                </li>
             </ul>
             <div class="nav-actions">
                 <a href="../index.html#contact" class="book-btn">Book Appointment</a>
-                <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
-                    <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
-                </button>
             </div>
             <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">&#9776;</button>
         </nav>
@@ -104,6 +70,40 @@
         <span style="color: var(--gold); letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Our Story</span>
         <h1 style="font-family: 'Playfair Display', serif; font-size: 54px; margin: 15px 0;">About Ishika</h1>
         <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Dedicated to enhancing your natural beauty since 2010.</p>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="team-section">
+        <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">THE EXPERTS</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 42px; margin: 15px 0;">Meet Our Founder & Team</h2>
+        <p style="color: var(--gray); max-width: 600px; margin: 0 auto; margin-bottom: 40px;">The creative visionaries and dedicated artists behind Ishika Professional Salon & Spa.</p>
+        
+        <div class="team-grid" style="margin-bottom: 60px;">
+            <div class="team-card">
+                <img src="../assets/images/about/founder.jpg" alt="Ishika" class="team-img" loading="lazy" style="width: 180px; height: 180px; object-fit: cover; object-position: center 20%;">
+                <h3 class="team-name">Ishika</h3>
+                <div class="team-role">Founder & Lead Artist</div>
+                <p class="team-bio">With 15 years of experience in the beauty and bridal industry, Ishika has transformed countless brides. Her passion for perfection and continuous learning ensures that every client leaves feeling like royalty.</p>
+            </div>
+        </div>
+
+        <div class="team-photo-container" style="max-width: 1000px; margin: 0 auto; display: flex; gap: 20px; align-items: center; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+            <!-- Hide scrollbar in webkit -->
+            <style> .team-photo-container::-webkit-scrollbar { display: none; } </style>
+            
+            <!-- Image Card -->
+            <div style="flex: 0 0 85%; max-width: 400px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); scroll-snap-align: center;">
+                <img src="../assets/images/about/our team.jpg" alt="Our Expert Team" style="width: 100%; height: 260px; object-fit: cover; display: block; object-position: center;">
+            </div>
+            
+            <!-- Text Card -->
+            <div style="flex: 0 0 85%; max-width: 500px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; scroll-snap-align: center;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 12px; color: var(--gold);">Our Talented Team</h3>
+                <p style="color: var(--gray); font-size: 14px; line-height: 1.5; margin-bottom: 10px;">Meet the dedicated professionals who bring the Ishika vision to life. Our team consists of highly trained makeup artists, hair stylists, and spa therapists who are passionate about their craft.</p>
+                <p style="color: var(--gray); font-size: 14px; line-height: 1.5; margin: 0;">With years of collective experience, we work together to ensure that every client receives personalized attention and a flawless luxury experience.</p>
+            </div>
+            
+        </div>
     </section>
 
     <!-- About Content -->
@@ -127,13 +127,25 @@
     <section class="mission-vision">
         <div class="mv-grid">
             <div class="mv-card">
+                <div class="mv-icon"><i data-lucide="target"></i></div>
                 <h3>Our Mission</h3>
-                <p style="color: var(--gray); line-height: 1.6;">To provide exceptional beauty services that empower our clients to feel confident and beautiful. We strive to create a relaxing, luxurious environment where every detail is taken care of.</p>
+                <p>To provide exceptional beauty services that empower our clients to feel confident and beautiful. We strive to create a relaxing, luxurious environment where every detail is taken care of.</p>
             </div>
             <div class="mv-card">
+                <div class="mv-icon"><i data-lucide="sparkles"></i></div>
                 <h3>Our Vision</h3>
-                <p style="color: var(--gray); line-height: 1.6;">To be the leading luxury salon and spa in the region, constantly innovating and setting new standards in the beauty industry through continuous education and passion.</p>
+                <p>To be the leading luxury salon and spa in the region, constantly innovating and setting new standards in the beauty industry through continuous education and passion.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- 15 Years Celebration -->
+    <section class="celebration-section">
+        <div class="celebration-card">
+            <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px; display: block; margin-bottom: 15px;">CELEBRATING SUCCESS</span>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 38px; color: var(--text-color); margin-bottom: 30px;">15 Years of Excellence</h3>
+            <img src="../assets/images/about/ribbon cutting.jpg" alt="Salon Inauguration" loading="lazy">
+            <p style="color: var(--gray); line-height: 1.8; font-size: 16px; max-width: 800px; margin: 0 auto;">What started as a dream has now blossomed into a legacy. We recently celebrated our 15th anniversary and inaugurated our newly upgraded salon space to provide an even more luxurious experience for our beloved clients.</p>
         </div>
     </section>
 
@@ -143,6 +155,10 @@
             <div class="footer-about">
                 <a href="../index.html" class="footer-logo" aria-label="Ishika Professional Salon home">ISHIKA<span>Professional Salon &amp; Spa</span></a>
                 <p>Luxury bridal makeup, elegant hair styling, mehendi and restorative beauty rituals, crafted for your most memorable moments.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ishika_professional_salon_spa" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="https://www.youtube.com/@josphinclairing8087" target="_blank" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                </div>
             </div>
             <div>
                 <h3>Quick Links</h3>
@@ -151,7 +167,7 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="../index.html#packages">Packages</a></li>
-                    <li><a href="../index.html#contact">Book Appointment</a></li>
+                    <li><a href="about.html">About Us</a></li>
                 </ul>
             </div>
             <div>
@@ -160,18 +176,22 @@
                     <li><a href="services.html#bridal-makeup">Bridal Makeup</a></li>
                     <li><a href="services.html#hair-styling">Hair Styling</a></li>
                     <li><a href="services.html#mehendi">Mehendi</a></li>
+                    <li><a href="services.html#spa-therapy">Facial &amp; Spa</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
                 <h3>Visit &amp; Contact</h3>
-                <ul>
-                    <li>Ghatsila, Jharkhand</li>
-                    <li><a href="tel:+917463030584">+91 74630 30584</a></li>
+                <ul style="display: flex; flex-direction: column; gap: 15px;">
+                    <li style="display: flex; gap: 10px; align-items: flex-start;"><i data-lucide="map-pin" style="width: 18px; height: 18px; color: var(--gold); margin-top: 4px;"></i> Ghatsila, Jharkhand, India</li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="phone" style="width: 18px; height: 18px; color: var(--gold);"></i> <a href="tel:+917463030584">+91 74630 30584</a></li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="mail" style="width: 18px; height: 18px; color: var(--gold);"></i> <a href="mailto:info@example.com">info@example.com</a></li>
+                    <li style="display: flex; gap: 10px; align-items: center;"><i data-lucide="clock" style="width: 18px; height: 18px; color: var(--gold);"></i> Open daily, 9:00 AM - 8:00 PM</li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
             <span>Copyright 2026 Ishika Professional Salon &amp; Spa. All rights reserved.</span>
+            <span class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a><span>Designed by Ishika Professional Salon &amp; Spa</span></span>
         </div>
     </footer>
 

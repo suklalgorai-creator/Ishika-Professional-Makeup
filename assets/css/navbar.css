@@ -173,7 +173,10 @@
 .scroll-progress {
     position: fixed;
     top: 0; left: 0;
-    width: 0; height: 4px;
+    width: 100%; height: 4px;
     z-index: 1200;
     background: linear-gradient(90deg, var(--primary), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    will-change: transform;
 }

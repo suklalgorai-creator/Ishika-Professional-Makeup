@@ -40,14 +40,39 @@
     .navbar { height: 68px; }
     .logo-main { font-size: 22px; letter-spacing: 1.5px; }
     .logo-sub { font-size: 7.5px; letter-spacing: 2px; }
+    
     .theme-toggle { width: 34px; height: 34px; }
     .theme-toggle-icon { font-size: 16px; }
+    
     .menu-btn { width: 38px; height: 38px; font-size: 26px; }
     .nav-actions { margin-left: auto; margin-right: 12px; }
 
+    .mobile-theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+    }
+
     /* Reduce vertical padding between sections on mobile */
     section { padding: 50px 22px; }
-    .book-btn { display: none; }
+    
+    /* Show Book button in mobile header */
+    .book-btn { 
+        display: inline-flex; 
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px; 
+        font-size: 0; /* Hides original 'Book Appointment' text */
+        white-space: nowrap;
+        margin-right: 8px;
+    }
+    .book-btn::before {
+        content: 'Book Now';
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: inherit;
+    }
     
     /* Make About Us image smaller on mobile */
     .about-left img {
@@ -108,8 +133,37 @@
         scroll-snap-align: center;
     }
     .gallery-item.large { grid-row: auto; }
-    .footer-grid { grid-template-columns: 1fr; }
     .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .footer { padding: 50px 0 20px; overflow-x: hidden; }
+    .footer-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .footer-grid::-webkit-scrollbar { display: none; }
+    .footer-grid > div {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(214, 179, 106, 0.15);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
     
     /* Horizontal scroll for About Us sections */
     .about-features { margin-bottom: 24px; }
@@ -149,7 +203,41 @@
     .stat-box p { font-size: 13px; white-space: normal; word-break: break-word; }
     
     .cta { margin: 60px 20px; padding: 60px 25px; }
-    .appointment-right { padding: 28px 20px; }
+    .appointment-right { 
+        padding: 24px 20px; 
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+    .appointment-right form { gap: 12px; }
+    
+    .appointment-right input,
+    .appointment-right select,
+    .appointment-right textarea {
+        padding: 13px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background-color: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(10px);
+    }
+    
+    .appointment-right input:focus,
+    .appointment-right select:focus,
+    .appointment-right textarea:focus {
+        border-color: var(--gold);
+        background-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 3px rgba(214, 179, 106, 0.1);
+    }
+    
+    .appointment-right button {
+        margin-top: 6px;
+        padding: 15px;
+        font-size: 15px;
+        border-radius: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 8px 20px rgba(214, 179, 106, 0.25);
+    }
     .package-card.featured { transform: none; }
     .lightbox-nav { top: auto; bottom: 24px; }
     

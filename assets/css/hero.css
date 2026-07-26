@@ -31,6 +31,7 @@
     opacity: 0;
     transform: scale(1.05);
     transition: opacity 2s ease-in-out, transform 5s ease-out;
+    will-change: transform, opacity;
 }
 
 /* First slide visible by default */
@@ -72,7 +73,6 @@
     max-width: 900px;
     color: white;
     padding: 0 20px;
-    animation: zoomOutEntry 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both;
     text-shadow: 0 12px 34px rgba(0,0,0,.35);
 }
 
@@ -92,12 +92,6 @@
     text-transform: uppercase;
     text-shadow: 0 0 12px rgba(214, 179, 106, 0.6);
     box-shadow: 0 0 18px rgba(214, 179, 106, 0.25), inset 0 0 12px rgba(214, 179, 106, 0.08);
-    animation: tagPulse 3s ease-in-out infinite;
-}
-
-@keyframes tagPulse {
-    0%, 100% { box-shadow: 0 0 18px rgba(214, 179, 106, 0.25), inset 0 0 12px rgba(214, 179, 106, 0.08); }
-    50% { box-shadow: 0 0 28px rgba(214, 179, 106, 0.45), inset 0 0 18px rgba(214, 179, 106, 0.15); }
 }
 
 .hero h1 {
@@ -106,6 +100,7 @@
     line-height: 1.1;
     margin-bottom: 25px;
     text-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 0 40px rgba(0,0,0,0.3);
+    animation: zoomOutEntry 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both;
 }
 
 .hero p {
@@ -140,6 +135,7 @@
     width: 2px; height: 34px;
     background: white;
     animation: scroll 1.5s infinite;
+    will-change: transform;
 }
 
 @keyframes scroll {

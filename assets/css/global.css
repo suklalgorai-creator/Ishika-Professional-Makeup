@@ -25,6 +25,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 90px;
+    overflow-x: hidden;
 }
 
 body {
@@ -141,8 +142,10 @@ textarea:focus-visible {
 .preloader-mark {
     font-family: 'Playfair Display', serif;
     color: var(--primary);
-    font-size: clamp(36px, 6vw, 70px);
-    letter-spacing: 8px;
+    font-size: clamp(18px, 4vw, 42px);
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 0 20px;
     animation: preloaderPulse 1.15s ease-in-out infinite alternate;
 }
 .preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }

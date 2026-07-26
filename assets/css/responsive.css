@@ -36,8 +36,24 @@
 
 /* ── Mobile (≤768px) ── */
 @media (max-width: 768px) {
-    section { padding: 84px 22px; }
+    /* Header sizing adjustments */
+    .navbar { height: 68px; }
+    .logo-main { font-size: 22px; letter-spacing: 1.5px; }
+    .logo-sub { font-size: 7.5px; letter-spacing: 2px; }
+    .theme-toggle { width: 34px; height: 34px; }
+    .theme-toggle-icon { font-size: 16px; }
+    .menu-btn { width: 38px; height: 38px; font-size: 26px; }
+    .nav-actions { margin-left: auto; margin-right: 12px; }
+
+    /* Reduce vertical padding between sections on mobile */
+    section { padding: 50px 22px; }
     .book-btn { display: none; }
+    
+    /* Make About Us image smaller on mobile */
+    .about-left img {
+        max-height: 320px;
+        aspect-ratio: 4/3;
+    }
 
     .nav-menu {
         position: absolute;
@@ -64,17 +80,99 @@
     .section-title h2 { font-size: 36px; }
     .about-right h2, .appointment-left h2, .cta h2 { font-size: 38px; }
 
-    .gallery-grid { grid-template-columns: 1fr; }
+    /* Horizontal Snap Scroll for Mobile Cards */
+    .services-grid, .gallery-grid, .package-grid, .why-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        
+        /* Make scroll edge-to-edge and prevent page overflow */
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .services-grid::-webkit-scrollbar, .gallery-grid::-webkit-scrollbar, .package-grid::-webkit-scrollbar, .why-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .service-card, .gallery-item, .package-card, .why-card {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
     .gallery-item.large { grid-row: auto; }
     .footer-grid { grid-template-columns: 1fr; }
     .instagram-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats { flex-direction: column; }
-    .about-features { grid-template-columns: 1fr; }
+    
+    /* Horizontal scroll for About Us sections */
+    .about-features { margin-bottom: 24px; }
+    .stats { margin-bottom: 24px; }
+    .stats, .about-features { 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding-bottom: 15px;
+        scrollbar-width: none;
+        
+        /* Make scroll edge-to-edge and prevent page overflow */
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    .stats::-webkit-scrollbar, .about-features::-webkit-scrollbar { display: none; }
+    .feature {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        scroll-snap-align: start;
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+    .stat-box {
+        flex: 0 0 160px;
+        scroll-snap-align: start;
+        padding: 18px 15px;
+    }
+    .stat-box h3 { font-size: 32px; margin-bottom: 5px; }
+    .stat-box p { font-size: 13px; white-space: normal; word-break: break-word; }
+    
     .cta { margin: 60px 20px; padding: 60px 25px; }
     .appointment-right { padding: 28px 20px; }
     .package-card.featured { transform: none; }
     .lightbox-nav { top: auto; bottom: 24px; }
-    .service-card, .package-card, .why-card, .testimonial-card { padding: 28px 20px; }
+    
+    /* Service Card Mobile Adjustments to reduce vertical height */
+    .service-card { padding: 0; }
+    .service-image { height: 180px; }
+    .service-content { padding: 20px 16px; }
+    .service-card h3 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
+    .service-card p { font-size: 13px; margin-bottom: 12px; line-height: 1.5; }
+    .service-price { margin-bottom: 12px; font-size: 14px; }
+    
+    .package-card, .why-card { padding: 28px 20px; }
+    
+    /* Reduce vertical space in testimonial cards */
+    .testimonial-card { padding: 20px 20px 18px; }
+    .review-source { margin-bottom: 12px; padding: 6px 12px; font-size: 12px; }
+    .testimonial-card p { font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
+    .stars { margin-bottom: 8px; font-size: 16px; }
+    .quote { font-size: 32px; margin-bottom: 5px; }
+    
+    /* Hide testimonial slider arrows on mobile */
+    .testimonial-controls { display: none; }
+    
     .social-section { margin-top: 42px; }
     .social-section-heading, .copyright { display: block; }
     .social-section-heading h3 { margin-top: 8px; }
@@ -90,7 +188,6 @@
 
 /* ── Services 1-col (≤600px) ── */
 @media (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
     .service-card { min-height: 0; }
 }
 

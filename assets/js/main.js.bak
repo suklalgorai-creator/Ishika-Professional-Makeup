@@ -1,0 +1,351 @@
+(() => {
+    'use strict';
+
+    const $ = (selector, scope = document) => scope.querySelector(selector);
+    const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+
+    const header = $('.header');
+    const navMenu = $('.nav-menu');
+    const menuBtn = $('.menu-btn');
+    const progress = $('.scroll-progress');
+    const backToTop = $('.back-to-top');
+    const preloader = $('.preloader');
+    const hero = $('.hero');
+    const themeToggle = $('.theme-toggle');
+    const themeToggleIcon = $('.theme-toggle-icon');
+    const navLinks = $$('.nav-link');
+    const sections = navLinks
+        .map((link) => $(link.getAttribute('href')))
+        .filter(Boolean);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const initTheme = () => {
+        const setTheme = (theme) => {
+            const isDark = theme === 'dark';
+            document.body.dataset.theme = theme;
+            themeToggle?.setAttribute('aria-pressed', String(isDark));
+            themeToggle?.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+
+            if (themeToggleIcon) {
+                themeToggleIcon.innerHTML = isDark ? '&#9790;' : '&#9788;';
+            }
+        };
+
+        let savedTheme = 'dark';
+        try {
+            savedTheme = localStorage.getItem('ishika-theme') || 'dark';
+        } catch (error) {
+            // Theme preference is optional when browser storage is unavailable.
+        }
+
+        setTheme(savedTheme);
+
+        themeToggle?.addEventListener('click', () => {
+            const nextTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            setTheme(nextTheme);
+
+            try {
+                localStorage.setItem('ishika-theme', nextTheme);
+            } catch (error) {
+                // Keep the selected theme for the current page session.
+            }
+        });
+    };
+
+    const closeMenu = () => {
+        if (!navMenu || !menuBtn) return;
+        navMenu.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open menu');
+    };
+
+    const updateChrome = () => {
+        const scrollTop = window.scrollY;
+        const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progressWidth = pageHeight > 0 ? (scrollTop / pageHeight) * 100 : 0;
+
+        header?.classList.toggle('scrolled', scrollTop > 20);
+        backToTop?.classList.toggle('show', scrollTop > 500);
+
+        if (progress) {
+            progress.style.width = `${progressWidth}%`;
+        }
+
+        if (hero && !prefersReducedMotion) {
+            hero.style.backgroundPosition = `center ${scrollTop * 0.18}px`;
+        }
+    };
+
+    const setActiveLink = () => {
+        const offset = window.scrollY + 130;
+        let activeId = 'home';
+
+        sections.forEach((section) => {
+            if (section.offsetTop <= offset) {
+                activeId = section.id;
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
+        });
+    };
+
+    const smoothScrollTo = (target) => {
+        const section = $(target);
+        if (!section) return;
+
+        section.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'start'
+        });
+    };
+
+    const initMenu = () => {
+        menuBtn?.addEventListener('click', () => {
+            const isOpen = navMenu?.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', String(Boolean(isOpen)));
+            menuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        });
+
+        navLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeMenu();
+                smoothScrollTo(link.getAttribute('href'));
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeMenu();
+        });
+    };
+
+    const initReveal = () => {
+        const revealItems = $$('section, .service-card, .package-card, .why-card, .testimonial-card, .gallery-item, .stat-box');
+        revealItems.forEach((item) => item.classList.add('reveal'));
+
+        if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+            revealItems.forEach((item) => item.classList.add('visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.14, rootMargin: '0px 0px -60px 0px' });
+
+        revealItems.forEach((item) => observer.observe(item));
+    };
+
+    const initCounters = () => {
+        const counters = $$('[data-count]');
+        if (!counters.length) return;
+
+        const animateCounter = (counter) => {
+            const target = Number(counter.dataset.count || 0);
+            const suffix = counter.textContent.includes('+') ? '+' : '';
+            const duration = 1500;
+            const start = performance.now();
+
+            const tick = (now) => {
+                const progressValue = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progressValue, 3);
+                counter.textContent = `${Math.floor(target * eased)}${suffix}`;
+
+                if (progressValue < 1) {
+                    requestAnimationFrame(tick);
+                }
+            };
+
+            requestAnimationFrame(tick);
+        };
+
+        if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+            counters.forEach(animateCounter);
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        counters.forEach((counter) => observer.observe(counter));
+    };
+
+    const initLightbox = () => {
+        const lightbox = $('.lightbox');
+        const lightboxImg = $('.lightbox img');
+        const closeBtn = $('.lightbox-close');
+        const prevBtn = $('.lightbox-prev');
+        const nextBtn = $('.lightbox-next');
+        const galleryImages = $$('.gallery-item img').filter((img) => img.getAttribute('src'));
+        let currentIndex = 0;
+
+        if (!lightbox || !lightboxImg || !galleryImages.length) return;
+
+        const showImage = (index) => {
+            currentIndex = (index + galleryImages.length) % galleryImages.length;
+            const image = galleryImages[currentIndex];
+            lightboxImg.src = image.currentSrc || image.src;
+            lightboxImg.alt = image.alt || 'Ishika salon gallery image';
+        };
+
+        const openLightbox = (index) => {
+            showImage(index);
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            closeBtn?.focus();
+        };
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        galleryImages.forEach((image, index) => {
+            image.closest('.gallery-item')?.addEventListener('click', () => openLightbox(index));
+        });
+
+        closeBtn?.addEventListener('click', closeLightbox);
+        prevBtn?.addEventListener('click', () => showImage(currentIndex - 1));
+        nextBtn?.addEventListener('click', () => showImage(currentIndex + 1));
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+            if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+        });
+    };
+
+    const initTestimonials = () => {
+        const cards = $$('.testimonial-card');
+        const controls = $$('.testimonial-btn');
+        let activeIndex = 0;
+        let timer;
+
+        if (!cards.length) return;
+
+        const showSlide = (index) => {
+            activeIndex = (index + cards.length) % cards.length;
+            cards.forEach((card, cardIndex) => {
+                card.classList.toggle('active', cardIndex === activeIndex);
+            });
+        };
+
+        const startTimer = () => {
+            if (prefersReducedMotion) return;
+            clearInterval(timer);
+            timer = setInterval(() => showSlide(activeIndex + 1), 4500);
+        };
+
+        controls.forEach((button) => {
+            button.addEventListener('click', () => {
+                const direction = button.dataset.slide === 'prev' ? -1 : 1;
+                showSlide(activeIndex + direction);
+                startTimer();
+            });
+        });
+
+        showSlide(0);
+        startTimer();
+    };
+
+    const initRipple = () => {
+        $$('.primary-btn, .secondary-btn, .book-btn').forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const ripple = document.createElement('span');
+
+                ripple.className = 'ripple';
+                ripple.style.width = `${size}px`;
+                ripple.style.height = `${size}px`;
+                ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+                ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+
+                button.appendChild(ripple);
+                ripple.addEventListener('animationend', () => ripple.remove());
+            });
+        });
+    };
+
+    const initImageFallbacks = () => {
+        $$('img').forEach((image) => {
+            image.addEventListener('error', () => {
+                image.classList.add('is-missing');
+                image.setAttribute('aria-hidden', 'true');
+            }, { once: true });
+        });
+    };
+
+    const initForm = () => {
+        $('.booking-form')?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const data = new FormData(form);
+            const bookingMessage = [
+                'Hello, I want to book an appointment at Ishika Professional Salon & Spa.',
+                `Name: ${data.get('name')}`,
+                `Phone: ${data.get('phone')}`,
+                `Service: ${data.get('service')}`,
+                `Preferred date: ${data.get('date')}`,
+                data.get('message') ? `Message: ${data.get('message')}` : ''
+            ].filter(Boolean).join('\n');
+
+            window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(bookingMessage)}`, '_blank', 'noopener');
+            form.reset();
+        });
+    };
+
+    const initIcons = () => {
+        window.lucide?.createIcons({
+            attrs: {
+                'stroke-width': 1.7,
+                'aria-hidden': 'true'
+            }
+        });
+    };
+
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+        preloader?.classList.add('hide');
+    });
+
+    window.addEventListener('scroll', () => {
+        updateChrome();
+        setActiveLink();
+    }, { passive: true });
+
+    backToTop?.addEventListener('click', () => smoothScrollTo('#home'));
+
+    initMenu();
+    initTheme();
+    initIcons();
+    initReveal();
+    initCounters();
+    initLightbox();
+    initTestimonials();
+    initRipple();
+    initImageFallbacks();
+    initForm();
+    updateChrome();
+    setActiveLink();
+})();

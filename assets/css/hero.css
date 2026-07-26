@@ -1,0 +1,116 @@
+/* ==============================
+   HERO
+   ============================== */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: transparent;
+    animation: heroFade .9s ease both;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: url("../images/hero/hero.png") center/cover no-repeat;
+    transform: scale(1.25);
+    animation: heroZoomOut 20s ease-out forwards;
+    will-change: transform;
+}
+
+@keyframes heroZoomOut {
+    0%   { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(34,34,34,.42), rgba(34,34,34,.18)),
+        radial-gradient(circle at 18% 18%, rgba(214,179,106,.16), transparent 28%),
+        linear-gradient(135deg, rgba(183,110,121,.20), rgba(34,34,34,.16));
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20,12,14,.22), rgba(20,12,14,.48));
+    z-index: 2;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    color: white;
+    padding: 0 20px;
+    animation: zoomOutEntry 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both;
+    text-shadow: 0 12px 34px rgba(0,0,0,.35);
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 10px 22px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 40px;
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(8px);
+    margin-bottom: 26px;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 82px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #f4f4f4;
+    line-height: 1.8;
+    margin-bottom: 45px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 4;
+}
+.scroll-indicator span {
+    width: 2px; height: 34px;
+    background: white;
+    animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+    0%   { transform: scaleY(0); transform-origin: top; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}

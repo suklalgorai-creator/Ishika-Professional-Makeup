@@ -175,44 +175,11 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero" style="background: linear-gradient(rgba(20,12,14,.6), rgba(20,12,14,.8)), url('../assets/images/gallery/bridal-5.jpg') center/cover; padding-top: 150px; padding-bottom: 80px; text-align: center; color: white;">
-        <span style="color: var(--gold); letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Our Portfolio</span>
-        <h1 style="font-family: 'Playfair Display', serif; font-size: 54px; margin: 15px 0;">Complete Gallery</h1>
-        <p style="color: #ccc; max-width: 600px; margin: 0 auto;">A collection of our finest transformations and memorable moments.</p>
-    </section>
+    <!-- Page Hero (Rendered by JS) -->
+    <section class="page-hero" id="page-hero"></section>
 
-    <!-- Gallery Content -->
-    <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="bridal">Bridal</button>
-        <button class="filter-btn" data-filter="mehendi">Mehendi</button>
-        <button class="filter-btn" data-filter="hair">Hair Styling</button>
-    </div>
-
-    <div class="masonry-gallery">
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal (2).jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal 3.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal 1.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal-4.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal-5.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal7.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal 8.jpg" alt="Bridal Look" loading="lazy"></div>
-        <div class="masonry-item mehendi"><img src="../assets/images/gallery/mehendi_art_1.jpg" alt="Bridal Mehendi Art" loading="lazy"></div>
-        <div class="masonry-item mehendi"><img src="../assets/images/gallery/mehendi_leg_1.jpg" alt="Bridal Mehendi Legs" loading="lazy"></div>
-        <div class="masonry-item mehendi"><img src="../assets/images/gallery/mehendi_hand_full.jpg" alt="Full Hand Mehendi" loading="lazy"></div>
-        <div class="masonry-item mehendi"><img src="../assets/images/gallery/mehendi_arabic.jpg" alt="Arabic Mehendi" loading="lazy"></div>
-        <div class="masonry-item mehendi"><img src="../assets/images/gallery/mehendi_portrait.jpg" alt="Portrait Mehendi" loading="lazy"></div>
-        <div class="masonry-item mehendi"><img src="../assets/images/gallery/mehendi_ceremony.jpg" alt="Mehendi Ceremony" loading="lazy"></div>
-        <div class="masonry-item hair"><img src="../assets/images/gallery/hair_styling_1.jpg" alt="Bridal Hair Styling" loading="lazy"></div>
-        <div class="masonry-item hair"><img src="../assets/images/gallery/hair_styling_side.jpg" alt="Hair Styling Side Profile" loading="lazy"></div>
-        <div class="masonry-item hair"><img src="../assets/images/gallery/hair_styling_braid.jpg" alt="Traditional Bridal Braid" loading="lazy"></div>
-        <div class="masonry-item hair"><img src="../assets/images/gallery/hair_styling_front.jpg" alt="Hair Styling Front Waves" loading="lazy"></div>
-        <div class="masonry-item hair"><img src="../assets/images/services/hair_styling_1784990692929.png" alt="Hair Styling Service" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal_makeup_eye.jpg" alt="Bridal Eye Makeup" loading="lazy"></div>
-        <div class="masonry-item bridal"><img src="../assets/images/gallery/bridal_makeup_hd.jpg" alt="HD Bridal Makeup" loading="lazy"></div>
-    </div>
+    <!-- Gallery Content (Rendered by JS) -->
+    <div id="gallery-page-content"></div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -268,40 +235,6 @@
     <a href="tel:+917463030584" class="floating-call" aria-label="Call Ishika Professional Salon"><i data-lucide="phone-call" aria-hidden="true"></i></a>
     <button type="button" class="back-to-top" aria-label="Back to top">&uarr;</button>
 
-    <script type="module">
-        import { initTheme } from '../assets/js/theme.js';
-        import { initNavbar, updateChrome } from '../assets/js/navbar.js';
-        import { $ } from '../assets/js/utils.js';
-        
-        window.lucide?.createIcons({ attrs: { 'stroke-width': 1.7 } });
-        
-        initTheme();
-        initNavbar();
-        updateChrome();
-        window.addEventListener('scroll', updateChrome, { passive: true });
-        
-        // Gallery Filtering Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.masonry-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
+    <script type="module" src="../assets/js/main.js" defer></script>
 </body>
 </html>

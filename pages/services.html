@@ -1,2 +1,256 @@
-<!-- Services Page -->
-<!-- TODO: Bridal, Hair, Spa, Mehendi, Pricing -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Ishika Professional Salon & Spa</title>
+    <meta name="description" content="Detailed luxury beauty services including Bridal Makeup, Hair Styling, Spa, and more at Ishika Professional Salon.">
+    <meta name="theme-color" content="#b57a84">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/global.css?v=12">
+    <!-- We will add a new CSS file for subpages to handle specific page styles if needed -->
+    <link rel="stylesheet" href="../assets/css/services-page.css">
+    
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+</head>
+
+<body data-theme="dark">
+    <div class="preloader" aria-label="Page loading">
+        <div class="preloader-mark">ISHIKA</div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!--==================== NAVBAR ====================-->
+    <header class="header">
+        <nav class="navbar" aria-label="Primary navigation">
+            <a href="../index.html" class="logo">
+                <span class="logo-main">ISHIKA</span>
+                <span class="logo-sub">Professional Salon & Spa</span>
+            </a>
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="../index.html#packages" class="nav-link">Packages</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="../index.html#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../index.html#contact" class="book-btn">Book Appointment</a>
+                <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+                    <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
+                </button>
+            </div>
+            <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">&#9776;</button>
+        </nav>
+    </header>
+
+    <!--==================== PAGE HERO ====================-->
+    <section class="page-hero" style="background: linear-gradient(rgba(20,12,14,.6), rgba(20,12,14,.8)), url('../assets/images/gallery/bridal-4.jpg') center/cover; padding-top: 150px; text-align: center; color: white;">
+        <span style="color: var(--gold); letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Discover Our Expertise</span>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 54px; margin: 15px 0;">Our Luxury Services</h1>
+        <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Explore our comprehensive range of premium beauty treatments designed to make you look and feel your absolute best.</p>
+    </section>
+
+    <!--==================== SERVICES DETAILS ====================-->
+    
+    <section class="service-detail" id="bridal-makeup">
+        <div class="service-detail-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+            <div class="service-detail-image">
+                <img src="../assets/images/services/bridal_makeup_1784990666991.png" alt="Bridal Makeup" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+            </div>
+            <div class="service-detail-content">
+                <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">SIGNATURE SERVICE</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; margin: 15px 0;">Bridal Makeup</h2>
+                <p style="line-height: 1.8; color: var(--gray); margin-bottom: 20px;">Your wedding day is one of the most important days of your life. Our expert bridal makeup artists specialize in creating timeless, flawless looks using premium international products like MAC, Huda Beauty, and Kryolan.</p>
+                <ul style="margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> HD Makeup</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Airbrush Makeup</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Traditional Bridal Makeup</li>
+                </ul>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Starting From ₹XXXX</div>
+                <a href="../index.html#contact" class="primary-btn">Book This Service</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="hair-styling" style="background: var(--bg-alt);">
+        <div class="service-detail-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+            <div class="service-detail-content">
+                <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">HAIR EXPERTISE</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; margin: 15px 0;">Hair Styling & Treatment</h2>
+                <p style="line-height: 1.8; color: var(--gray); margin-bottom: 20px;">From elegant bridal buns to modern Hollywood waves, our hairstylists craft the perfect look to complement your features and outfit. We also offer advanced hair treatments.</p>
+                <ul style="margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Bridal Hair Styling</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Hair Spa & Smoothing</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Creative Hair Cuts & Coloring</li>
+                </ul>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Starting From ₹XXXX</div>
+                <a href="../index.html#contact" class="primary-btn">Book This Service</a>
+            </div>
+            <div class="service-detail-image">
+                <img src="../assets/images/services/hair_styling_1784990692929.png" alt="Hair Styling" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="mehendi">
+        <div class="service-detail-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+            <div class="service-detail-image">
+                <img src="../assets/images/services/mehendi_1784990718580.png" alt="Mehendi" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+            </div>
+            <div class="service-detail-content">
+                <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">ARTISTRY</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; margin: 15px 0;">Bridal Mehendi</h2>
+                <p style="line-height: 1.8; color: var(--gray); margin-bottom: 20px;">Embrace tradition with our intricate and beautiful mehendi designs. We use 100% natural, organic henna that guarantees a rich, dark stain for your big day.</p>
+                <ul style="margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Traditional Indian Designs</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Arabic Mehendi</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Custom Portrait Mehendi</li>
+                </ul>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Starting From ₹XXXX</div>
+                <a href="../index.html#contact" class="primary-btn">Book This Service</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="spa-therapy" style="background: var(--bg-alt);">
+        <div class="service-detail-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+            <div class="service-detail-content">
+                <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">RELAXATION</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; margin: 15px 0;">Spa Therapy</h2>
+                <p style="line-height: 1.8; color: var(--gray); margin-bottom: 20px;">Escape the stress of daily life. Our luxurious spa treatments are designed to rejuvenate your mind, body, and soul using premium essential oils and ancient massage techniques.</p>
+                <ul style="margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Full Body Massage</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Aromatherapy</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Body Polishing & Scrub</li>
+                </ul>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Starting From ₹XXXX</div>
+                <a href="../index.html#contact" class="primary-btn">Book This Service</a>
+            </div>
+            <div class="service-detail-image">
+                <img src="../assets/images/services/spa_therapy_1784990737316.png" alt="Spa Therapy" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="facial">
+        <div class="service-detail-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+            <div class="service-detail-image">
+                <img src="../assets/images/services/facial_1784990760148.png" alt="Facial Treatment" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+            </div>
+            <div class="service-detail-content">
+                <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">SKIN CARE</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; margin: 15px 0;">Advanced Facials</h2>
+                <p style="line-height: 1.8; color: var(--gray); margin-bottom: 20px;">Experience a radiant glow with our customized facial treatments. We analyze your skin type and use dermatologically tested products to address acne, pigmentation, and anti-aging.</p>
+                <ul style="margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Deep Cleansing Facial</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> O3+ Bridal Glow Facial</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Anti-Aging & Skin Tightening</li>
+                </ul>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Starting From ₹XXXX</div>
+                <a href="../index.html#contact" class="primary-btn">Book This Service</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="nail-art" style="background: var(--bg-alt);">
+        <div class="service-detail-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 60px 20px;">
+            <div class="service-detail-content">
+                <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">BEAUTY & STYLE</span>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; margin: 15px 0;">Nail Art & Extensions</h2>
+                <p style="line-height: 1.8; color: var(--gray); margin-bottom: 20px;">Make a statement with perfectly manicured nails. From classic French tips to extravagant 3D nail art and durable acrylic extensions, our nail technicians do it all.</p>
+                <ul style="margin-bottom: 30px;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Gel Polish & Extensions</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> 3D Custom Nail Art</li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; color: var(--gray);"><i data-lucide="check" style="color: var(--primary);"></i> Luxury Manicure & Pedicure</li>
+                </ul>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 20px;">Starting From ₹XXXX</div>
+                <a href="../index.html#contact" class="primary-btn">Book This Service</a>
+            </div>
+            <div class="service-detail-image">
+                <img src="../assets/images/services/nail_art_1784990782393.png" alt="Nail Art" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+    </section>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="../index.html" class="footer-logo" aria-label="Ishika Professional Salon home">ISHIKA<span>Professional Salon &amp; Spa</span></a>
+                <p>Luxury bridal makeup, elegant hair styling, mehendi and restorative beauty rituals, crafted for your most memorable moments.</p>
+                <div class="footer-socials" aria-label="Social media links">
+                    <a href="https://www.instagram.com/ishika_professional_salon_spa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="url(#ig-grad-footer)"><defs><linearGradient id="ig-grad-footer" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm3.98-10.84a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="../index.html#packages">Packages</a></li>
+                    <li><a href="../index.html#contact">Book Appointment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Signature Services</h3>
+                <ul>
+                    <li><a href="services.html#bridal-makeup">Bridal Makeup</a></li>
+                    <li><a href="services.html#hair-styling">Hair Styling</a></li>
+                    <li><a href="services.html#mehendi">Mehendi</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Visit &amp; Contact</h3>
+                <ul>
+                    <li>Ghatsila, Jharkhand</li>
+                    <li><a href="tel:+917463030584">+91 74630 30584</a></li>
+                    <li><a href="mailto:info@example.com">info@example.com</a></li>
+                    <li>Open daily, 9:00 AM - 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <span>Copyright 2026 Ishika Professional Salon &amp; Spa. All rights reserved.</span>
+            <span class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></span>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <a href="https://wa.me/917463030584" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+    
+    <!-- Floating Actions -->
+    <a href="https://wa.me/917463030584?text=Hello%20I%20want%20to%20book%20an%20appointment" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+    <a href="tel:+917463030584" class="floating-call" aria-label="Call Ishika Professional Salon"><i data-lucide="phone-call" aria-hidden="true"></i></a>
+    <button type="button" class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+    <!-- Modifying script path for subpages -->
+    <script type="module">
+        import { initTheme } from '../assets/js/theme.js';
+        import { initNavbar, updateChrome } from '../assets/js/navbar.js';
+        import { $ } from '../assets/js/utils.js';
+        
+        window.lucide?.createIcons({ attrs: { 'stroke-width': 1.7 } });
+        
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            $('.preloader')?.classList.add('hide');
+        });
+
+        initTheme();
+        initNavbar();
+        updateChrome();
+        window.addEventListener('scroll', updateChrome, { passive: true });
+    </script>
+</body>
+</html>

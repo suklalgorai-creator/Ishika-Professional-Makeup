@@ -1,2 +1,199 @@
-<!-- About Page -->
-<!-- TODO: Story, Team, Experience -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Ishika Professional Salon & Spa</title>
+    <meta name="description" content="Learn more about Ishika Professional Salon, our expert artists, and our 14 years of experience in Ghatsila.">
+    <meta name="theme-color" content="#b57a84">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/global.css?v=12">
+    <style>
+        .about-page-content {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        .about-text p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .mission-vision {
+            background: var(--bg-alt);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .mv-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .mv-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .mv-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        @media (max-width: 900px) {
+            .about-page-content, .mv-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+</head>
+
+<body data-theme="dark">
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="navbar" aria-label="Primary navigation">
+            <a href="../index.html" class="logo">
+                <span class="logo-main">ISHIKA</span>
+                <span class="logo-sub">Professional Salon & Spa</span>
+            </a>
+            <ul class="nav-menu" id="primary-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="../index.html#packages" class="nav-link">Packages</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="../index.html#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../index.html#contact" class="book-btn">Book Appointment</a>
+                <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+                    <span class="theme-toggle-icon" aria-hidden="true">&#9790;</span>
+                </button>
+            </div>
+            <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-menu">&#9776;</button>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="background: linear-gradient(rgba(20,12,14,.6), rgba(20,12,14,.8)), url('../assets/images/appointment/appointment_salon_mirror_1785028616896.jpg') center/cover; padding-top: 150px; padding-bottom: 80px; text-align: center; color: white;">
+        <span style="color: var(--gold); letter-spacing: 2px; font-size: 14px; text-transform: uppercase;">Our Story</span>
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 54px; margin: 15px 0;">About Ishika</h1>
+        <p style="color: #ccc; max-width: 600px; margin: 0 auto;">Dedicated to enhancing your natural beauty since 2010.</p>
+    </section>
+
+    <!-- About Content -->
+    <div class="about-page-content">
+        <div class="about-text">
+            <span style="color: var(--primary); font-weight: 600; letter-spacing: 2px; font-size: 12px;">THE JOURNEY</span>
+            <h2>Creating Beautiful Brides Since 2010</h2>
+            <p>Welcome to Ishika Professional Salon & Spa, Ghatsila's premier destination for luxury beauty services. Founded over 14 years ago, our salon has built a reputation for excellence, creativity, and unparalleled customer service.</p>
+            <p>Our team of certified professionals is passionate about beauty. We specialize in HD and airbrush bridal makeup, creative hair styling, and rejuvenating spa therapies. We believe that every client is unique, and we tailor our services to highlight your individual features and personal style.</p>
+            <p>We pride ourselves on using only the finest international products, ensuring that you not only look stunning but that your skin and hair are nourished and protected.</p>
+            <div style="margin-top: 30px;">
+                <a href="../index.html#contact" class="primary-btn">Contact Us</a>
+            </div>
+        </div>
+        <div class="about-image">
+            <img src="../assets/images/gallery/bridal 3.jpg" alt="Ishika Salon Artist at Work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision">
+        <div class="mv-grid">
+            <div class="mv-card">
+                <h3>Our Mission</h3>
+                <p style="color: var(--gray); line-height: 1.6;">To provide exceptional beauty services that empower our clients to feel confident and beautiful. We strive to create a relaxing, luxurious environment where every detail is taken care of.</p>
+            </div>
+            <div class="mv-card">
+                <h3>Our Vision</h3>
+                <p style="color: var(--gray); line-height: 1.6;">To be the leading luxury salon and spa in the region, constantly innovating and setting new standards in the beauty industry through continuous education and passion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a href="../index.html" class="footer-logo" aria-label="Ishika Professional Salon home">ISHIKA<span>Professional Salon &amp; Spa</span></a>
+                <p>Luxury bridal makeup, elegant hair styling, mehendi and restorative beauty rituals, crafted for your most memorable moments.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="../index.html#packages">Packages</a></li>
+                    <li><a href="../index.html#contact">Book Appointment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Signature Services</h3>
+                <ul>
+                    <li><a href="services.html#bridal-makeup">Bridal Makeup</a></li>
+                    <li><a href="services.html#hair-styling">Hair Styling</a></li>
+                    <li><a href="services.html#mehendi">Mehendi</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Visit &amp; Contact</h3>
+                <ul>
+                    <li>Ghatsila, Jharkhand</li>
+                    <li><a href="tel:+917463030584">+91 74630 30584</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <span>Copyright 2026 Ishika Professional Salon &amp; Spa. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <a href="https://wa.me/917463030584?text=Hello%20I%20want%20to%20book%20an%20appointment" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+    <a href="tel:+917463030584" class="floating-call" aria-label="Call Ishika Professional Salon"><i data-lucide="phone-call" aria-hidden="true"></i></a>
+    <button type="button" class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { initTheme } from '../assets/js/theme.js';
+        import { initNavbar, updateChrome } from '../assets/js/navbar.js';
+        import { $ } from '../assets/js/utils.js';
+        
+        window.lucide?.createIcons({ attrs: { 'stroke-width': 1.7 } });
+        
+        initTheme();
+        initNavbar();
+        updateChrome();
+        window.addEventListener('scroll', updateChrome, { passive: true });
+    </script>
+</body>
+</html>

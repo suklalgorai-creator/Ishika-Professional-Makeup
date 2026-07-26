@@ -50,6 +50,8 @@ export const updateChrome = () => {
 };
 
 export const setActiveLink = () => {
+    if (sections.length === 0) return; // Don't run scrollspy on subpages
+    
     const offset = window.scrollY + 130;
     let activeId = 'home';
 
@@ -60,7 +62,10 @@ export const setActiveLink = () => {
     });
 
     navLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+            link.classList.toggle('active', href === `#${activeId}`);
+        }
     });
 };
 
@@ -73,9 +78,15 @@ export const initNavbar = () => {
 
     navLinks.forEach((link) => {
         link.addEventListener('click', (event) => {
-            event.preventDefault();
-            closeMenu();
-            smoothScrollTo(link.getAttribute('href'));
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                event.preventDefault();
+                closeMenu();
+                smoothScrollTo(href);
+            } else {
+                // For cross-page links (like pages/services.html or ../index.html), let the browser handle it
+                closeMenu();
+            }
         });
     });
 

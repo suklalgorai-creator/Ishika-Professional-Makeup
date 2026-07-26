@@ -80,7 +80,9 @@
     .social-section-heading h3 { margin-top: 8px; }
     .social-grid { grid-template-columns: 1fr; }
     .footer-legal { justify-content: flex-start; margin-top: 12px; }
-    .floating-call { right: 16px; bottom: 150px; width: 48px; height: 48px; font-size: 17px; }
+    .floating-call { right: 16px; bottom: 136px; width: 48px; height: 48px; font-size: 17px; }
+    .floating-whatsapp { right: 16px; bottom: 78px; width: 48px; height: 48px; }
+    .back-to-top { right: 16px; bottom: 20px; width: 48px; height: 48px; }
     .contact-card { padding: 25px 18px; }
     .contact-list { grid-template-columns: 1fr; }
     .map-frame iframe { min-height: 340px; }
@@ -103,12 +105,10 @@
     .hero-buttons, .cta-buttons { flex-direction: column; }
     .instagram-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .package-card, .service-card { padding: 34px 22px; }
-    .floating-whatsapp, .back-to-top { right: 16px; width: 48px; height: 48px; }
     .hero-tag {
-        border-color: rgba(255,255,255,.14);
-        background: rgba(255,255,255,.045);
-        box-shadow: 0 10px 26px rgba(0,0,0,.10);
-        backdrop-filter: blur(6px);
+        font-size: 11px;
+        padding: 10px 20px;
+        letter-spacing: 2px;
     }
 }
 
@@ -118,6 +118,9 @@
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+    }
+    /* Keep slider fade working even with reduced motion */
+    .hero-slide {
+        transition-duration: 1s !important;
     }
 }

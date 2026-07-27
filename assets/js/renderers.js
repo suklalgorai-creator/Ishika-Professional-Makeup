@@ -140,13 +140,17 @@ export function renderGallery(data, container, basePath = "") {
         if (item.type === 'video') {
             return `
                 <div class="gallery-item ${item.size === 'large' ? 'large' : ''}" data-category="${item.category}">
-                    <video src="${basePath}${item.image}" aria-label="${item.alt}" muted loop playsinline controls preload="metadata"></video>
+                    <a href="${basePath}${item.image}" class="glightbox" data-gallery="home-gallery" style="display: block; width: 100%; height: 100%;">
+                        <video src="${basePath}${item.image}" aria-label="${item.alt}" muted loop playsinline preload="metadata"></video>
+                    </a>
                 </div>
             `;
         }
         return `
             <div class="gallery-item ${item.size === 'large' ? 'large' : ''}" data-category="${item.category}">
-                <img src="${basePath}${item.image}" alt="${item.alt}" width="640" height="760" loading="lazy">
+                <a href="${basePath}${item.image}" class="glightbox" data-gallery="home-gallery" style="display: block; width: 100%; height: 100%;">
+                    <img src="${basePath}${item.image}" alt="${item.alt}" width="640" height="760" loading="lazy">
+                </a>
             </div>
         `;
     }).join('');
@@ -379,13 +383,17 @@ export function renderGalleryPage(data, container, basePath = "") {
                 if (item.type === 'video') {
                     return `
                         <div class="masonry-item ${item.category}">
-                            <video src="${basePath}${item.image}" aria-label="${item.alt}" muted loop playsinline controls preload="metadata"></video>
+                            <a href="${basePath}${item.image}" class="glightbox" data-gallery="full-gallery" style="display: block;">
+                                <video src="${basePath}${item.image}" aria-label="${item.alt}" muted loop playsinline preload="metadata"></video>
+                            </a>
                         </div>
                     `;
                 }
                 return `
                     <div class="masonry-item ${item.category}">
-                        <img src="${basePath}${item.image}" alt="${item.alt}" loading="lazy">
+                        <a href="${basePath}${item.image}" class="glightbox" data-gallery="full-gallery" style="display: block;">
+                            <img src="${basePath}${item.image}" alt="${item.alt}" loading="lazy">
+                        </a>
                     </div>
                 `;
             }).join('')}

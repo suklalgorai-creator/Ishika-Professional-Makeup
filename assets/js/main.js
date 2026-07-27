@@ -80,7 +80,15 @@ async function loadAndRender() {
         initIcons();
         initReveal();
         initCounters();
-        initLightbox();
+        // initLightbox(); // Replaced with premium GLightbox
+        if (typeof GLightbox !== 'undefined') {
+            GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                zoomable: true
+            });
+        }
         if (!isSubPage) initTestimonials();
         initRipple();
         initImageFallbacks();

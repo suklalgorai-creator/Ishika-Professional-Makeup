@@ -22,6 +22,37 @@
     .footer { padding: 70px 7% 26px; }
 }
 
+/* ── iPad/Tablet Header Horizontal Scroll (769px - 1100px) ── */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .navbar {
+        gap: 15px;
+    }
+    .nav-menu {
+        flex: 1;
+        min-width: 0; /* Allows the flex item to shrink and trigger scroll */
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        margin: 0 15px;
+        padding-bottom: 6px; /* space for the hover underline */
+        gap: 25px; /* slightly reduce gap on tablet */
+    }
+    .nav-menu::-webkit-scrollbar {
+        display: none;
+    }
+    .nav-menu a {
+        white-space: nowrap;
+    }
+    .logo, .nav-actions {
+        flex-shrink: 0;
+    }
+    .book-btn {
+        padding: 12px 18px;
+        font-size: 11px;
+    }
+}
+
 /* ── Services 2-col (≤900px) ── */
 @media (max-width: 900px) {
     .services-grid {
